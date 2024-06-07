@@ -1,0 +1,197 @@
+<form
+  method="POST"
+  action="https://cronnos.activehosted.com/proc.php"
+  id="form_196"
+>
+  <input type="hidden" name="u" value="39" />
+  <input type="hidden" name="f" value="39" />
+  <input type="hidden" name="s" />
+  <input type="hidden" name="c" value="0" />
+  <input type="hidden" name="m" value="0" />
+  <input type="hidden" name="act" value="sub" />
+  <input type="hidden" name="v" value="2" />
+
+  <div class="active-form">
+    <div class="form-block">
+      <label for="fullname" class="_form-label"> </label>
+      <input
+        type="text"
+        name="fullname"
+        id="fullname"
+        data-name="fullname"
+        placeholder="Digite seu nome"
+        required
+      />
+    </div>
+
+    <div class="form-block emailform">
+      <label for="email" class="_form-label"> </label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        data-name="email"
+        placeholder="Digite seu melhor e-mail"
+        required
+      />
+    </div>
+
+    <label for="phone" class="_form-label"> </label>
+    <div class="_form-label">
+      <input
+        type="text"
+        id="phone"
+        name="phone"
+        placeholder="Deixe seu telefone para ser notificado no Whatsapp"
+        required
+        onkeydown="return mascaraTelefone(event)"
+      />
+    </div>
+    <div class="form-block">
+      <button>clique aqui para se inscrever</button>
+    </div>
+  </div>
+</form>
+
+<script>
+  function mascaraTelefone(event) {
+    let tecla = event.key
+    let telefone = event.target.value.replace(/\D+/g, "")
+
+    if (/^[0-9]$/i.test(tecla)) {
+      telefone = telefone + tecla
+      let tamanho = telefone.length
+
+      if (tamanho >= 12) {
+        return false
+      }
+
+      if (tamanho > 10) {
+        telefone = telefone.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3")
+      } else if (tamanho > 5) {
+        telefone = telefone.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3")
+      } else if (tamanho > 2) {
+        telefone = telefone.replace(/^(\d\d)(\d{0,5})/, "($1) $2")
+      } else {
+        telefone = telefone.replace(/^(\d*)/, "($1")
+      }
+
+      event.target.value = telefone
+    }
+
+    if (!["Backspace", "Delete"].includes(tecla)) {
+      return false
+    }
+  }
+</script>
+
+<style>
+  form * {
+    box-sizing: border-box;
+  }
+
+  .active-form {
+    padding: 0px;
+    /* background: white; */
+    position: relative;
+    width: 100%;
+  }
+
+  .active-form input[type="text"],
+  .active-form input[type="email"] {
+    margin: -7px 0px;
+    background: white;
+    font-size: 16px;
+    color: #757575;
+    font-weight: 400;
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    font-family: Montserrat, Sans-serif;
+    padding: 8px 18px;
+    vertical-align: middle;
+    line-height: 1.4;
+    min-height: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 0 3px rgb(0 0 0 / 5%);
+  }
+
+  .active-form input::placeholder {
+    color: #757575;
+    background-color: #fff;
+    font-family: Poppins, Sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .form-block button {
+    background: #00b244 !important;
+    border: none;
+    border-radius: 20px;
+    color: #ffffff;
+    margin: 20px auto;
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-transform: uppercase;
+    width: 100%;
+    font-family: Chakra Petch, Sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    box-shadow: 0px 0px 4px #00b244;
+  }
+
+  @media screen and (max-width: 767px) {
+    form * {
+      box-sizing: border-box;
+    }
+
+    .active-form {
+      padding: 0px;
+      /* background: white; */
+      position: relative;
+      width: 100%;
+    }
+
+    .active-form input[type="text"],
+    .active-form input[type="email"] {
+      margin: -7px 0px;
+      background: white;
+      font-size: 16px;
+      color: #757575;
+      font-weight: 400;
+      width: 100%;
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      font-family: Montserrat, Sans-serif;
+      padding: 8px 18px;
+      vertical-align: middle;
+      line-height: 1.4;
+      min-height: 40px;
+      border-radius: 5px;
+      box-shadow: 0 0 0 3px rgb(0 0 0 / 5%);
+    }
+
+    .active-form input::placeholder {
+      color: #757575;
+      background-color: #fff;
+      font-family: Poppins, Sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .form-block button {
+      background: #00b244 !important;
+      border: none;
+      border-radius: 20px;
+      color: #ffffff;
+      margin: 20px auto;
+      display: block;
+      padding: 10px 0px;
+      text-transform: uppercase;
+      width: 100%;
+      font-family: Chakra Petch, Sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      box-shadow: 0px 0px 4px #00b244;
+    }
+  }
+</style>
